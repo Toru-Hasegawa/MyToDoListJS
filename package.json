@@ -4,7 +4,7 @@
   "description": "MyToDoListJS app for Modernize Node.JS Web Apps with Azure App Service course",
   "main": "server/server.js",
   "engines": {
-    "node": "18.13.0",
+    "node": "18.17.1",
     "npm": "8.19.3"
   },
   "scripts": {
