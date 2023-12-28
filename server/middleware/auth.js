@@ -2,15 +2,14 @@ const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt
 const User = require("../models/index")["User"];
-const Constants = require("../utilities/constants");
 
 
 module.exports = function AuthMiddleware(app) {
     // Middleware
     const authStrategy = new JwtStrategy({
-        secretOrKey: Constants.authSecret,
+        secretOrKey: process.env.AUTH_SECRET,
         algorithms: ["HS256"],
-        issuer: Constants.tokenIssuer,
+        issuer: process.env.TOKEN_ISSUER,
         ignoreExpiration: false,
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer')
     }, async (payload, done) => {

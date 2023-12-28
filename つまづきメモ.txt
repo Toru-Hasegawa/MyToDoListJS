@@ -1,0 +1,9 @@
+https://www.oqiita.com/?p=2680
+
+https://qiita.com/chenglin/items/b3ca0bc1dca0ed682b05
+
+MYSQL_USER=hasegawa
+MYSQL_PASSWORD=Zaq12wsx
+MYSQL_HOST=my-todo-list-js.mysql.database.azure.com
+MYSQL_PORT=3306
+MYSQL_DATABASE=mytodolist
