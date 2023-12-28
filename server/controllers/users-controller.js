@@ -3,7 +3,6 @@ var bcrypt = require('bcrypt');
 const User = require("../models/index")['User'];
 const asyncWrapper = require("../utilities/async-wrapper").AsyncWrapper;
 const jsonwebtoken = require("jsonwebtoken");
-const Constants = require("../utilities/constants");
 const AuthenticationError = require("../errors/authentication-error");
 const ValidationError = require("../errors/validation-error");
 const ValidatorMiddleware = require("../middleware/validator");
@@ -20,9 +19,9 @@ function generateAccessToken(user) {
     let payload = {
         user: userInfo
     };
-    const token = jsonwebtoken.sign(payload, Constants.authSecret, {
+    const token = jsonwebtoken.sign(payload, process.env.AUTH_SECRET, {
         algorithm: "HS256",
-        issuer: Constants.tokenIssuer,
+        issuer: process.env.tokenIssuer,
         subject: `${user.id}`
     });
     return token;
@@ -39,7 +38,7 @@ async function checkIfEmailExists(email) {
 
 router.post("/signup", [ValidatorMiddleware("User")], asyncWrapper(async (req, res) => {
     let existingUser = await checkIfEmailExists(req.body.email);
-    if(existingUser) {
+    if (existingUser) {
         throw new ValidationError(`User with email: ${req.body.email} already exists`);
     }
     const password = await bcrypt.hash(req.body.password, saltRounds);
@@ -48,7 +47,7 @@ router.post("/signup", [ValidatorMiddleware("User")], asyncWrapper(async (req, r
         lastName: req.body.lastName,
         email: req.body.email,
         password: password
-    }); 
+    });
     res.send(generateAccessToken(user));
 }));
 
@@ -60,12 +59,12 @@ router.post("/signin", [ValidatorMiddleware("User", "signIn")], asyncWrapper(asy
             email
         }
     });
-    if(!user) {
+    if (!user) {
         throw new AuthenticationError();
     }
     else {
         const result = await bcrypt.compare(password, user.password);
-        if(result === true) {
+        if (result === true) {
             res.send(generateAccessToken(user));
         }
         else {
