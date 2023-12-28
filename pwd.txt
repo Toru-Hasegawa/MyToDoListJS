@@ -1,0 +1,11 @@
+ID:toru.hasegawa@hasegawa0805tmoutlook.onmicrosoft.com
+PASS:q4q!uZaafM/CS2@
+
+y‰¼‘zƒ}ƒVƒ“z
+ID:azureuser
+PASS:q4q!uZaafM/CS2@
+
+
+yAzure Database for MySQL serverz
+ID:hasegawa
+PASS:Zaq12wsx

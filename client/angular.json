@@ -130,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "packt-app-service"
+  "defaultProject": "packt-app-service",
+  "cli": {
+    "analytics": "7eef86f8-0847-4c96-a321-3d349a6877ff"
+  }
 }
