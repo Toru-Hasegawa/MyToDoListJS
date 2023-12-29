@@ -3,7 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { User } from "../models/user.model";
 import { Observable, Subscriber, Observer } from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
+// import * as jwt_decode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable()
 export class AuthService {
@@ -25,10 +26,10 @@ export class AuthService {
         }
         else{
             localStorage.setItem("accessToken", value);
-            const decoded = jwt_decode(value);
-            if(decoded && decoded.user) {
-                localStorage.setItem("user", JSON.stringify(decoded.user));
-            }
+            const decoded = jwtDecode(value);
+//            if(decoded && decoded.user) {
+//                localStorage.setItem("user", JSON.stringify(decoded.user));
+//            }
         }
         this._accessTokenObserver.next(value);
     }
