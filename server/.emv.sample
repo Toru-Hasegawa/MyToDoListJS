@@ -1,0 +1,7 @@
+MYSQL_USER=hasegawa
+MYSQL_PASSWORD=Zaq12wsx
+MYSQL_HOST=my-todo-list-js.mysql.database.azure.com
+MYSQL_PORT=3306
+MYSQL_DATABASE=mytodolist
+AUTH_SECRET=nuh54wtglgwestrgw45tgwns
+TOKEN_ISSUER=hasegawa
